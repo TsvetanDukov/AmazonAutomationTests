@@ -5,9 +5,9 @@ import org.openqa.selenium.WebDriver;
 
 public class HomePage {
 
-    private WebDriver driver;
-    private By leftNavigationPanel = By.id("nav-hamburger-menu");
-    private By todayDeals = By.linkText("Today's Deals");
+    private final WebDriver driver;
+    private final By leftNavigationPanel = By.id("nav-hamburger-menu");
+    private final By todayDeals = By.linkText("Today's Deals");
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
@@ -20,5 +20,9 @@ public class HomePage {
     public TodayDealsPage clickTodayDealsLink() {
         driver.findElement(todayDeals).click();
         return new TodayDealsPage(driver);
+    }
+
+    public  boolean isTodayDealsLinkDisplayed() {
+        return driver.findElement(todayDeals).isDisplayed();
     }
 }

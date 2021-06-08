@@ -44,4 +44,17 @@ public class TodayDealsTests extends BaseTest {
         TodayDealsPage dealsPage = homePage.clickTodayDealsLink();
         assertEquals(dealsPage.getPageHeader(), "Deals and Promotions", "Page Header is incorrect!");
     }
+
+    @Test
+    public void extendAndCollapseDepartmentMenuExpandLink() {
+        TodayDealsPage dealsPage = homePage.clickTodayDealsLink();
+        assertTrue(dealsPage.isExtendDepartmentLinkDisplayed(), "Extend department link is missing!");
+        dealsPage.clickExtendDepartmentLink();
+        assertEquals(dealsPage.departmentLinkIsExtended(), "See less Department",
+                "Department link is not extended!");
+        dealsPage.clickExtendDepartmentLink();
+        assertEquals(dealsPage.departmentLinkIsFolded(), "See more Department",
+                "Department link is not folded!");
+
+    }
 }

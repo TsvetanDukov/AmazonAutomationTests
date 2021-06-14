@@ -85,4 +85,10 @@ public class TodayDealsTests extends BaseTest {
         assertFalse(dealsPage.isUpcomingCheckboxUnselected(), "Upcoming checkbox is selected!");
         assertFalse(dealsPage.isMissedCheckboxUnselected(), "Missed checkbox is selected!");
     }
+
+    @Test
+    public void testRandomProductWithoutRegistration() {
+        TodayDealsPage dealsPage = homePage.clickTodayDealsLink();
+        dealsPage.clickRandomProduct();
+    }
 }

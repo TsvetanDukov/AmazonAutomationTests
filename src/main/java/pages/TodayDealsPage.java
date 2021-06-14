@@ -23,6 +23,7 @@ public class TodayDealsPage {
     private final By availabilityUpcomingCheckbox = By.xpath("//span[contains(text(), 'Upcoming')]/preceding-sibling::input");
     private final By availabilityMissedCheckbox = By.xpath("//span[contains(text(), 'Missed')]/preceding-sibling::input");
     private final By availabilityClearButton = By.xpath("//a[text() = 'Clear']/parent::div");
+    private final By randomProduct = By.id("100 924358cc-announce");
 
 
     public TodayDealsPage(WebDriver driver) {
@@ -114,6 +115,10 @@ public class TodayDealsPage {
 
     public void clickAvailabilityClearButton() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(availabilityClearButton)).click();
+    }
+
+    public void clickRandomProduct() {
+        driver.findElement(randomProduct).click();
     }
 }
 

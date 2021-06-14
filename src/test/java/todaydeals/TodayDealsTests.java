@@ -57,4 +57,32 @@ public class TodayDealsTests extends BaseTest {
                 "Department link is not folded!");
 
     }
+
+    @Test
+    public void testAvailabilityCheckboxes() {
+        TodayDealsPage dealsPage = homePage.clickTodayDealsLink();
+        assertEquals(dealsPage.availabilityHeader(), "Availability",
+                "Availability header is incorrect");
+        assertTrue(dealsPage.isActiveCheckboxDisplayed(), "Active checkbox is not displayed!");
+        assertTrue(dealsPage.isUpcomingCheckboxDisplayed(), "Upcoming checkbox is not displayed!");
+        assertTrue(dealsPage.isMissedCheckboxDisplayed(), "Missed checkbox is not displayed!");
+        //By default all check boxes are selected!
+        dealsPage.clickActiveCheckbox();
+        dealsPage.clickUpcomingCheckbox();
+        dealsPage.clickMissedCheckbox();
+        //Check that all checkboxes are unselected!
+        assertFalse(dealsPage.isActiveCheckboxUnselected(), "Active checkbox is selected!");
+        assertFalse(dealsPage.isUpcomingCheckboxUnselected(), "Upcoming checkbox is selected!");
+        assertFalse(dealsPage.isMissedCheckboxUnselected(), "Missed checkbox is selected!");
+    }
+    @Test
+    public void testAvailabilityClearButton() {
+        TodayDealsPage dealsPage = homePage.clickTodayDealsLink();
+        assertTrue(dealsPage.isClearButtonDisplayed(), "Clear button is not displayed!");
+        dealsPage.clickAvailabilityClearButton();
+        //Verify all checkboxes are unselected!
+        assertFalse(dealsPage.isActiveCheckboxUnselected(), "Active checkbox is selected!");
+        assertFalse(dealsPage.isUpcomingCheckboxUnselected(), "Upcoming checkbox is selected!");
+        assertFalse(dealsPage.isMissedCheckboxUnselected(), "Missed checkbox is selected!");
+    }
 }

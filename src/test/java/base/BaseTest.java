@@ -7,6 +7,9 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import pages.HomePage;
 
+import java.util.Iterator;
+import java.util.Set;
+
 public class BaseTest {
 
     private WebDriver driver;

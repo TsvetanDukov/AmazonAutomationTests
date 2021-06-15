@@ -17,6 +17,9 @@ public class SignInPage {
     private final By needHelpLink = By.xpath("//span[@class = 'a-expander-prompt']");
     private final By forgotPasswordLink = By.id("auth-fpp-link-bottom");
     private final By otherIssuesLink = By.id("ap-other-signin-issues-link");
+    private final By helpLink = By.xpath("//a[normalize-space() ='Help']");
+    private final By emptyFieldErrorMessage = By.xpath("//div[contains(text(),'Enter your email or mobile phone number')]");
+    private final By incorrectPhoneNumberError = By.xpath("//h4[contains(text(), 'Incorrect phone number')]");
 
 
     public SignInPage(WebDriver driver) {
@@ -59,5 +62,35 @@ public class SignInPage {
 
     public boolean isOtherIssuesLinkDisplayed() {
         return driver.findElement(otherIssuesLink).isDisplayed();
+    }
+
+    public boolean isHelpLinkDisplayed() {
+        return driver.findElement(helpLink).isDisplayed();
+    }
+
+    public CustomerServicePage clickHelpLink() {
+        driver.findElement(helpLink).click();
+        return new CustomerServicePage(driver);
+    }
+
+    public void setEmailField(String input) {
+        driver.findElement(emailField).sendKeys(input);
+    }
+
+    public void clickContinueButton() {
+        driver.findElement(continueButton).click();
+    }
+
+    public String verifyEmptyFieldErrorMessage () {
+        return driver.findElement(emptyFieldErrorMessage).getText();
+    }
+
+    public String verifyIncorrectPhoneNumberMessage() {
+        return driver.findElement(incorrectPhoneNumberError).getText();
+    }
+
+    public RegistrationPage clickCreateAccountButton() {
+        driver.findElement(createAccount).click();
+        return new RegistrationPage(driver);
     }
 }

@@ -6,6 +6,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.concurrent.TimeUnit;
+
 public class CustomerServicePage {
 
     private final WebDriver driver;
@@ -21,6 +23,10 @@ public class CustomerServicePage {
     public CustomerServicePage(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, 20);
+    }
+
+    public String verifyPageTitle() {
+        return driver.getTitle();
     }
 
     public String verifyPageHeader() {
@@ -71,4 +77,5 @@ public class CustomerServicePage {
     public void clickPreviousResultButton() {
         driver.findElement(previousResultButton).click();
     }
+
 }

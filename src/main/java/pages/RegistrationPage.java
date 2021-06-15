@@ -63,4 +63,25 @@ public class RegistrationPage {
     public boolean isContinueButtonDisplayed() {
         return driver.findElement(continueButton).isDisplayed();
     }
+
+    public void setNameField(String input) {
+        driver.findElement(nameField).sendKeys(input);
+    }
+
+    public void setEmailField(String input) {
+        driver.findElement(emailField).sendKeys(input);
+    }
+
+    public void setPasswordField(String input) {
+        driver.findElement(passwordField).sendKeys(input);
+    }
+
+    public void setReEnterPasswordField(String input) {
+        driver.findElement(reEnterPasswordField).sendKeys(input);
+    }
+
+    public AuthenticationPage clickContinueButton() {
+        driver.findElement(continueButton).click();
+        return new AuthenticationPage(driver);
+    }
 }

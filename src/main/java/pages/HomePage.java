@@ -14,6 +14,7 @@ public class HomePage {
     private final By leftNavigationPanel = By.id("nav-hamburger-menu");
     private final By todayDeals = By.linkText("Today's Deals");
     private final By customerService = By.linkText("Customer Service");
+    private final By giftCards = By.xpath("//a[text() = 'Gift Cards']");
     private final By accountAndListMenu = By.id("nav-link-accountList");
     private final By sigInFromAccountDropdown = By.xpath("//span[text() = 'Sign in']");
 
@@ -52,5 +53,13 @@ public class HomePage {
     public SignInPage clickSignInThroughAccountsMenu() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(sigInFromAccountDropdown)).click();
         return new SignInPage(driver);
+    }
+
+    public boolean isGiftCardsLinkDisplayed() {
+        return driver.findElement(giftCards).isDisplayed();
+    }
+    public GiftCardsPage clickGiftCardsLink() {
+        driver.findElement(giftCards).click();
+        return new GiftCardsPage(driver);
     }
 }
